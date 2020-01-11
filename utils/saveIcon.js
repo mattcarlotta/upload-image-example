@@ -19,14 +19,11 @@ export default async (req, res, next) => {
     // deconstruct the buffer and originalname from req.file
     const { buffer, originalname } = req.file;
 
-    // set current root directory to save to
-    const dirPath = `${currentDirectory}/uploads`;
-
     // generate a unique string to avoid naming collisions
     const filename = `${Date.now()}-${createRandomString()}-${originalname}`;
 
-    // set path to save the image to
-    const filepath = `uploads/${filename}`;
+    // set current root directory to save to
+    const dirPath = `${currentDirectory}/uploads`;
 
     // check that 'uploads' exists
     await new Promise((res, rej) =>
@@ -35,8 +32,11 @@ export default async (req, res, next) => {
       })
     );
 
+    // set path to save the image to
+    const filepath = `uploads/${filename}`;
+
     // write file to 'uploads/filepath.ext' using the buffer
-    await fs.writeFileSync(`${filepath}`, buffer);
+    await fs.writeFileSync(filepath, buffer);
 
     // add filepath to req.file (to send back to the createIcon controller)
     req.file.path = filepath;
