@@ -1,5 +1,5 @@
-import userRoutes from "./user";
+import iconRoutes from "./icon";
 
 export default app => {
-  userRoutes(app);
+  iconRoutes(app);
 };

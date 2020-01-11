@@ -1,18 +1,8 @@
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-  email: String,
-  firstName: String,
-  lastName: String,
-  userName: { type: String, unique: true, lowercase: true },
-  backgroundInfo: String,
-  address: {
-    street: String,
-    suite: String,
-    city: String,
-    state: String,
-    zipCode: String
-  }
+  email: { type: String, required: true, unique: true },
+  icon: { type: String, required: true, unique: true }
 });
 
 export default model("user", userSchema);

@@ -10,8 +10,8 @@ const inStaging = NODE_ENV_DEV === "staging";
 
 const baseURL =
 	inDevelopment || inStaging
-		? `http://localhost:${APIPORT}/api/`
-		: `https://example.com/api/`;
+		? `http://localhost:${APIPORT}`
+		: `https://example.com`;
 
 module.exports = {
 	/*  boolean to use bundle analyzer */
